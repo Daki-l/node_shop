@@ -16,6 +16,16 @@ var app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+const users = [
+    { id: 1, name: 'User 1', email: 'user1@example.com' },
+    { id: 2, name: 'User 2', email: 'user2@example.com' },
+    { id: 3, name: 'User 3', email: 'user3@example.com' }
+];
+// 获取所有用户信息的接口
+app.get('/api/users', (req, res) => {
+    res.json(users);
+});
+
 // 初始化数据库模块
 var database = require('./modules/database')
 database.initialize(app, function(err) {
